@@ -1,0 +1,56 @@
+<%= form_for @weather, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :weather_date, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :weather_date, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :wind_direction, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :wind_direction, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :wind_speed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :wind_speed, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :global_radiation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :global_radiation, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :temperature, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :temperature, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :humity, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :humity, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :atmospheric_pressure, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :atmospheric_pressure, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :precipitation, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :precipitation, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                weathers_path, :class => 'btn' %>
+  </div>
+<% end %>

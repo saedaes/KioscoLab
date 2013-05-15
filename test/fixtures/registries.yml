@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hora_login: 2013-04-01 20:44:09
+  hora_logout: 2013-04-01 20:44:09
+  user_number: 1
+  actividad_id: 1
+
+two:
+  hora_login: 2013-04-01 20:44:09
+  hora_logout: 2013-04-01 20:44:09
+  user_number: 1
+  actividad_id: 1

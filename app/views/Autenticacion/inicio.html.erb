@@ -1,0 +1,33 @@
+<body background="http://blog.desdelinux.net/wp-content/uploads/2012/04/new_wallpaper_ruido.jpg">
+<center>
+	<font color="white"><h1>KIOSCO INFORMATIVO FING</h1></font>
+</center>
+<br />
+<br />
+<br />
+<center>
+		
+<%= form_tag 'news' do %>
+    <div class="field">
+        <font color="white"><h3>Usuario</h3></font>
+        <%= text_field_tag "field1" %>
+    </div>
+
+    <div class="field">
+        <font color="white"><h3>Contraseña</h3></font>
+        <%= password_field_tag "field2" %>
+    </div>
+
+    <div class="actions">
+    	<br />
+    	<br />
+        <%= submit_tag "Entrar", :class => 'btn btn-primary btn-large' %>
+    </div>
+<% end %>
+</center>
+<br />
+<br />
+<br />
+<center><img src="http://cudd.uach.mx/Imagenes/avisos/orgulloUACH.png" /></center>
+
+</body>

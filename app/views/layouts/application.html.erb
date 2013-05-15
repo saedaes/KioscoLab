@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="../blason.png"/>	
+  <title>Kiosco Informativo</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="/news">Inicio</a>
+      <div class="nav-collapse">
+        <ul class="nav">
+        	<%if current_user%>
+        		<li>
+        			<ul class="nav">
+            			<li id="fat-menu" class="dropdown">
+                			<a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Publicaciones<b class="caret"></b></a>
+                			<ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                				<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=link_to "Listado de publicaciones", publications_path%></a></li>
+                    			<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=link_to "Nueva publicación", new_publication_path%></a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=link_to "Organizar publicaciones", "/dinamicnews"%></a></li>
+                   			</ul>
+                		</li>
+            		</ul>
+        		</li>
+        		<li><%=link_to "Administradores", users_path%></li>
+        		<li><%=link_to "Listado de Puestos", puestos_path%></li>
+        		<li>
+        			<ul class="nav">
+            			<li id="fat-menu" class="dropdown">
+                			<a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">Bitácoras<b class="caret"></b></a>
+                			<ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                    			<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=link_to "Bitácora de actividades", registries_path%></a></li>
+                        		<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%=link_to "Bitácora de consultas", consultations_path%></a></li>
+                   			</ul>
+                		</li>
+            		</ul>
+        		</li>
+        		<li><%=link_to "Historial de clima", weathers_path%></li>
+        	<%else%>
+	        	<li><a href="https://sega.uach.mx/sega/">SEGA</a></li>
+	        	<li><a href="http://fing.aulas.uach.mx">MOODLE</a></li>
+	        	<li><a href="http://iuach.uach.mx/beca/">Becas</a></li>
+	        	<li><a href="http://siss.uach.mx/">Servicio Social</a>
+	        	<li><%=link_to "Historial de clima", weathers_path%></li>	
+	        	<%if $body == nil%>
+	        	<li> <%= form_tag 'news' do %>
+				      <form class="navbar-form pull-right">
+				  			<%= text_field_tag "field1", nil, placeholder: "usuario" %>
+				  			<%= password_field_tag "field2", nil, placeholder: "contraseña" %>
+				  			<%= submit_tag "Entrar", :class => 'btn btn-primary' , :name=>'boton_entrar' %>
+						</form>
+					 <% end %>
+				</li>
+				<%else%>
+		
+				<ul class="nav pull-right">
+					<li class="nav pull-right">
+						<%= form_tag '/news' do %>
+							<%= submit_tag 'Salir', :name => 'boton_salir', :class => 'btn btn-primary'%>	
+						<%end%>
+					</li>
+				</ul>
+				<%end%>
+        	<%end%>
+       
+        <%if current_user%>
+            <ul class="nav pull-right">
+              <div class="btn-group">
+                <button class="btn btn-info"><%=current_user.username%></button>
+                <button class="btn btn-info dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><%= link_to "Perfil", user_path(current_user)%></a></li>
+                  <li><a href="#"><%= link_to "Editar cuenta", edit_user_path(current_user.id)%></a></li>
+                  <li class="divider"></li>
+                  <li><a href="#"><%= link_to "Cerrar Sesion", :logout%></a></li>
+                </ul>
+              </div><!-- /btn-group -->
+            <!-- /btn-toolbar -->
+           </ul>
+    </ul>
+      <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+<%= yield %>
+<!--<div id="FOOTER">
+    <div class="creditos">Facultad de Ingeniería<br/>Circuito Universitario Campus II
+		<br /> Tels. (614) 442-9500 
+		<br /> Chihuahua, Chih., México<br/>
+	</div>
+</div> FOOTER -->
+</body>
+</html>

@@ -1,0 +1,114 @@
+<head>
+	
+	<title>Kiosco FING</title>
+	
+	<link rel="stylesheet" href="../stylesheets/slidorion.css" />
+	
+	
+	<script src="../javascripts/jquery.min.js"></script>
+	<script src="../javascripts/jquery.easing.js"></script>
+    <script src="../javascripts/jquery.slidorion.min.js"></script>
+	
+    <script>
+	$(document).ready(function() {
+		$('#slidorion').slidorion({
+			hoverPause: true,
+			interval: 5000,
+			speed: 500,
+			effect: 'fade'
+		});
+		$('#slidorion2').slidorion({
+			interval: 5000,
+			speed: 500,
+			effect: 'overRandom'
+
+		});
+	});
+	
+	function timedRefresh(timeoutPeriod) {
+		setTimeout("location.reload(true);",timeoutPeriod);
+	}
+	$(document).ready(function(){
+	  if ($('#refreshable').length) {
+        timedRefresh(300000);
+    }
+	});
+	</script>
+	
+</head>
+
+<body background="http://blog.desdelinux.net/wp-content/uploads/2012/04/new_wallpaper_ruido.jpg">
+	
+<div style="float: right">
+	<%if $body!= nil%>
+	<font color="white"><h5>Bienvenido: <%=$body.delete('\"')%></h5></font>
+	<%else%>
+	<%if $body.eql?("0")%>
+	<font color="white"><h5>Nombre de usuario o password incorrectos</h5></font>
+	<%else%>
+	<%end%>
+	<font color="white"><h5>Bienvenido</h5></font>
+	<%end%>
+</div>
+
+<div id = "refreshable">
+	<font color="white"><h3>Chihuahua</h3></font>
+	<%if @datosClima[7].to_f >= 10.1 and @datosClima[7].to_f <= 25.0 %>
+		<img src="/imagenes/11.png" width="80" height="80" />
+	<%elsif @datosClima[7].to_f >= 25.1 and @datosClima[7].to_f <= 75.0%>
+		<img src="/imagenes/12.png" width="80" height="80" />
+	<%elsif @datosClima[7].to_f >= 75.1 and @datosClima[7].to_f <= 300%>
+		<img src="/imagenes/3.png" width="80" height="80" />
+	<%else%>
+		<img src="/imagenes/32.png" width="80" height="80" />
+<%end%>
+
+<font color="white"><h5>Temperatura: <%=@datosClima[4]%>ºC</h5></font>
+<font color="white"><h5>Velocidad del viento: <%=@datosClima[2]%>km/h</h5></font>
+</div>
+
+<center><font color="white"><h1>Noticias Recientes</h1></font></center>
+<br />
+<br />
+<%	
+		 @segundanoticia =  EspecialNew.find(EspecialNew.first.id + 1)
+		 @noticia1 = Publication.find(EspecialNew.first.publicacion_id)
+   		 @noticia2 = Publication.find(@segundanoticia.publicacion_id)
+   	 	 @noticia3 = Publication.find(EspecialNew.last.publicacion_id) %>
+   	 	 
+	<div id="slidorion">
+		<div id="slider">
+			<div  class="slide">
+				<a href="<%=publication_path(@noticia1)%>"><img src="<%=@noticia1.imagen%>" width="488" height="400" ></a>
+			</div>
+			<div  class="slide">
+				<a href="<%=publication_path(@noticia2)%>"><img src="<%=@noticia2.imagen%>" width="488" height="400" ></a>
+			</div>
+			<div class="slide">
+				<a href="<%=publication_path(@noticia3)%>"><img src="<%=@noticia3.imagen%>" width="488" height="400" ></a>
+			</div>
+		</div>
+
+		<div id="accordion">
+			<div class="link-header"><%=@noticia1.titulo%></div>
+			<div class="link-content">
+				<p><%=@noticia1.contenido%></p>
+			</div>
+			<div class="link-header"><%=@noticia2.titulo%></div>
+			<div class="link-content">
+				<p><%=@noticia2.contenido%></p>
+			</div>
+			<div class="link-header"><%=@noticia3.titulo%></div>
+			<div class="link-content">
+				<p><%=@noticia3.contenido%></p>
+			</div>
+		</div>
+
+	</div>
+	<br />
+	<br />
+	<br />
+	
+   
+	<br /><br /><br /><br /><br />
+</body>

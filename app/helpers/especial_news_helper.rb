@@ -1,0 +1,2 @@
+module EspecialNewsHelper
+end

@@ -1,0 +1,60 @@
+<%- model_class = Weather -%>
+<div class="page-header">
+  <h1><%="Clima en Chihuahua al #{@weather.weather_date}"%></h1>
+</div>
+
+<div align="center">
+	<%if @weather.precipitation.to_f >= 10.1 and @weather.precipitation.to_f <= 25.0 %>
+		<img src="/imagenes/11.png" width="150" height="150" />
+	<%elsif @weather.precipitation.to_f >= 25.1 and @weather.precipitation.to_f <= 75.0%>
+		<img src="/imagenes/12.png" width="150" height="150" />
+	<%elsif @weather.precipitation.to_f >= 75.1 and @weather.precipitation.to_f <= 300%>
+		<img src="/imagenes/3.png" width="150" height="150" />
+	<%elsif @weather.global_radiation == 0 %>
+		<img src="/imagenes/31.png" width="250" height="250" />
+	<%else%>
+		<img src="/imagenes/32.png" width="250" height="250" />
+<%end%>
+
+<font color="black"><h3>Temperatura: <%=@weather.temperature%>ºC</h3></font>
+<font color="black"><h3>Velocidad del viento: <%=@weather.wind_speed%>km/h</h3></font>
+</div>
+
+<br />
+<br />
+
+<div align="center" class="accordion-heading">
+	<a class="btn btn-primary" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+    	Información desglosada
+    </a>
+</div>
+<br />
+<div id="collapseTwo" class="accordion-body collapse">
+	<div class="accordion-inner">
+    	<table class="table table-striped">
+			<thead>
+				<th>Fecha y hora:</th>
+				<th>Dirección del viento:</th>
+				<th>Velocidad del viento:</th>
+				<th>Radiación global:</th>
+				<th>Temperatura:</th>
+				<th>Humedad:</th>
+				<th>Presión atmosferica:</th>
+				<th>Precipitacion:</th>
+			</thead>
+			<tbody>
+				<td><%= @weather.weather_date %></td>
+				<td><%= @weather.wind_direction %></td>
+				<td><%= @weather.wind_speed %></td>
+				<td><%= @weather.global_radiation %></td>
+				<td><%= @weather.temperature %></td>
+				<td><%= @weather.humity %></td>
+				<td><%= @weather.atmospheric_pressure %></td>
+				<td><%= @weather.precipitation %></td>
+			</tbody>
+		</table>
+    </div>
+</div>
+  
+<%= link_to "Regresar", weathers_path, :class => 'btn'  %>
+

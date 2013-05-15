@@ -1,0 +1,39 @@
+<%= form_for @publication, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :titulo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :titulo, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :contenido, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :contenido, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :imagen, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :imagen, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :clasificacion, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :clasificacion, Clasification.all.collect{ |c| [c.nombre, c.id] }, {:include_blank => "-- Selecciona una clasificacion --"} %>
+      <%= link_to 'Clasificaciones', clasifications_path%>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :numEmpleado, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :numEmpleado, :value => current_user.user_number, :disabled => true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= submit_tag "Aceptar", :name => 'crear_publicacion', :class => 'btn btn-primary', :method => 'new' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                publications_path, :class => 'btn' %>
+  </div>
+<% end %>

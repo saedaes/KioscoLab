@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  weather_date: 2013-04-09
+  wind_direction: 1.5
+  wind_speed: 1.5
+  global_radiation: 1.5
+  temperature: 1.5
+  humity: 1.5
+  atmospheric_pressure: 1.5
+  precipitation: 1.5
+
+two:
+  weather_date: 2013-04-09
+  wind_direction: 1.5
+  wind_speed: 1.5
+  global_radiation: 1.5
+  temperature: 1.5
+  humity: 1.5
+  atmospheric_pressure: 1.5
+  precipitation: 1.5

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fecha_consulta: 2013-04-03
+  matricula: 1
+  id_publicacion: 1
+
+two:
+  fecha_consulta: 2013-04-03
+  matricula: 1
+  id_publicacion: 1

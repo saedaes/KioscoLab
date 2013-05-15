@@ -1,0 +1,26 @@
+<%= form_for @consultation, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :fecha_consulta, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :fecha_consulta, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :matricula, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :matricula, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :id_publicacion, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :id_publicacion, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                consultations_path, :class => 'btn' %>
+  </div>
+<% end %>

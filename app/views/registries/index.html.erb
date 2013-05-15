@@ -1,0 +1,63 @@
+<%- model_class = Registry -%>
+<div class="page-header">
+  <h1>Bitácora de actividades</h1>
+</div>
+
+<h3 style="padding: 10px">Búsqueda</h3>
+<br />
+<%=search_form_for @search do |f|%>
+	<div style="padding: 10px" class="field">
+		<%=f.label :user_number_matches, "Numero de empleado" %>
+		<%=f.text_field :user_number_matches%>
+	</div>
+	<div style="padding: 10px" class="actions"><%=f.submit "Buscar", :class => 'btn btn-primary'%></div>
+<%end%>
+<br />
+<br />
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Número de registro</th>
+      <th>Número de empleado</th>
+      <th>Actividad Realizada</th>
+      <th><%=sort_link @search, :publicacion, "Nombre de la publicacion"%></th>
+      <th><%=sort_link @search, :created_at, "Fecha y hora de elaboracion"%></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @registries.each do |registry| %>
+      <%user = User.find_by_user_number(registry.user_number)%>
+      <tr>
+      	<td><%=registry.id%></td>
+        <td>
+        	<div class="dropup">
+  				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"><span class="caret"></span><%=registry.user_number%></a>
+  					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+    					<li><b>Nombre: </b> <%=user.name%></li>
+    					<li class="divider"></li>
+    					<li><b>Usuario: </b><%=user.username%></li>
+    					<li class="divider"></li>
+    					<li><b>Correo: </b><%=user.email%></li>
+  					</ul>
+			</div>
+		</td>
+        <td><%= Activity.find(registry.actividad_id).nombre %></td>
+        <td><%= registry.publicacion%></td>
+        <td><%=l registry.created_at%></td>
+        <!--<td>
+          <%##= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_registry_path(registry), :class => 'btn btn-mini' %>
+          <%##= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      registry_path(registry),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>-->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%##= link_to t('.new', :default => t("helpers.links.new")),
+            new_registry_path,
+            :class => 'btn btn-primary' %>

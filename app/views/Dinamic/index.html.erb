@@ -1,0 +1,93 @@
+<center>
+<% if current_user %>
+	<h2>Seleccione la ubicacion de los anuncios</h2>
+	<br />
+	<br />
+	<br />
+	<%= form_tag 'news' do %>
+	<%@publications = Publication.all%>
+	
+<center><div class="hero-unit" style="width:700px">
+	<h2>Deslizador 1</h2>
+	<br />
+	<br />
+<table>
+	<tr>
+		<td>
+			<div id="container">
+				<center>
+					    <div class="field">
+					        <font color="blue"><h3>Noticia 1</h3></font>
+					        <%= select_tag "new1", options_from_collection_for_select(@publications, "id", "titulo")%>
+					    </div>
+				</center>
+			</div>
+		</td>
+		<td>
+			<div id="container">
+				<center>
+					    <div class="field">
+					        <font color="blue"><h3>Noticia 2</h3></font>
+					        <%= select_tag "new2", options_from_collection_for_select(@publications, "id", "titulo")%>
+					    </div>
+				</center>
+			</div>
+		</td>
+		<td>
+			<div id="container">
+				<center>
+					    <div class="field">
+					        <font color="blue"><h3>Noticia 3</h3></font>
+					        <%= select_tag "new3", options_from_collection_for_select(@publications, "id", "titulo")%>
+					    </div>				
+				</center>
+			</div>
+		</td>
+	</tr>
+</table>
+</div>
+<!--h3>Deslizador 2</h3>
+<table>
+	<tr>
+		<td>
+			<div id="container">
+				<center>
+					    <div class="field">
+					        <font color="blue"><h3>Noticia 1</h3></font>
+					        <%= select_tag "new4", options_from_collection_for_select(@publications, "id", "titulo")%>
+					    </div>
+				</center>
+			</div>
+		</td>
+		<td>
+			<div id="container">
+				<center>
+					    <div class="field">
+					        <font color="blue"><h3>Noticia 2</h3></font>
+					        <%= select_tag "new5", options_from_collection_for_select(@publications, "id", "titulo")%>
+					    </div>
+				</center>
+			</div>
+		</td>
+		<td>
+			<div id="container">
+				<center>
+					    <div class="field">
+					        <font color="blue"><h3>Noticia 3</h3></font>
+					        <%= select_tag "new6", options_from_collection_for_select(@publications, "id", "titulo")%>
+					    </div>				
+				</center>
+			</div>
+		</td>
+	</tr>
+</table>-->
+ 	<%= submit_tag "Aceptar", :name => 'acomodar_publicacion', :class => 'btn btn-primary btn-large' %>
+ 	<% end %>
+ <%else%>
+ 	<h1>Debes ingresar para poder acceder a esta vista</h1>
+ 	<br />
+ 	<br />
+ 	<br />
+ 	<h2><%= link_to "Ingresa!", :login %></h2>
+<%end%>
+</center>

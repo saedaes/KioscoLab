@@ -1,0 +1,23 @@
+<h1>Listing especial_news</h1>
+
+<table>
+  <tr>
+    <th>Publicacion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @especial_news.each do |especial_news| %>
+  <tr>
+    <td><%= especial_news.publicacion_id %></td>
+    <td><%= link_to 'Show', especial_news %></td>
+    <td><%= link_to 'Edit', edit_especial_news_path(especial_news) %></td>
+    <td><%= link_to 'Destroy', especial_news, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Especial new', new_especial_news_path %>

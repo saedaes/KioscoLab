@@ -1,0 +1,25 @@
+<%= form_for(@user_session) do |f| %>
+  <% if @user_session.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_session.errors.count, "error") %> No se puede iniciar sesion</h2>
+
+      <ul>
+      <% @user_session.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <b><%= f.label "Usuario",:class => 'control-label' %></b><br />
+    <%= f.text_field :username, :class => 'text_field' %>
+  </div>
+  <div class="field">
+    <b><%= f.label "Contraseña",:class => 'control-label' %></b><br />
+    <%= f.password_field :password, :class => 'password_field' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Aceptar", :class => 'btn btn-primary btn-large' %>
+  </div>
+<% end %>

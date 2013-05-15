@@ -1,0 +1,26 @@
+<%= form_for @puesto, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label 'ID Puesto', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :idPuesto, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Nombre, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :Nombre, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :Descripcion, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :Descripcion, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit 'Aceptar', :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                puestos_path, :class => 'btn' %>
+  </div>
+<% end %>

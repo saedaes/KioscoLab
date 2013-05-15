@@ -1,0 +1,60 @@
+<%- model_class = Weather -%>
+<div class="page-header">
+  <h1>Historial del clima en la ciudad de Chihuahua</h1>
+</div>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker({dateFormat: 'dd/mm/y'});
+  });
+</script>
+
+<div style="padding: 10px" class="actions">
+	<h3>Búsqueda por fecha</h3>  
+</div>
+
+<%=search_form_for @search do |f|%>
+	<div style="padding: 10px" class="field">
+		<%=f.label :weather_date_cont, "Fecha" %>
+		<%=f.text_field :weather_date_cont , :id => "datepicker"%>
+	</div>
+	<div style="padding: 10px" class="actions"><%=f.submit "Buscar", :class => 'btn btn-primary'%></div>
+<%end%>	
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Fecha y hora</th>
+      <th>Dirección del viento</th>
+      <th>Velocidad del viento</th>
+      <th>Radiación global</th>
+      <th>Temperatura</th>
+      <th>Humedad</th>
+      <th>Presión atmósferica</th>
+      <th>Precipitación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @weathers.each do |weather| %>
+      <tr>
+        <td><%= link_to weather.weather_date, weather_path(weather) %></td>
+        <td><%= weather.wind_direction %></td>
+        <td><%= weather.wind_speed %></td>
+        <td><%= weather.global_radiation %></td>
+        <td><%= weather.temperature %></td>
+        <td><%= weather.humity %></td>
+        <td><%= weather.atmospheric_pressure %></td>
+        <td><%= weather.precipitation %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div style="padding: 10px" class="actions">
+	<%= link_to 'Importar datos', 'import_weather', :class => 'btn btn-primary' %>
+</div>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<head>
+	
+	<meta name="description" content="The Slidorion is a great new jQuery plugin built to combine an image slider and an accordion. Accompanied by a range of features and effects, the Slidorion a fantastic and slick plugin that is compatible with all browsers.">
+	<meta name="author" content="Ben Holland">
+	
+	<title>Kiosco FING</title>
+	
+	<link rel="stylesheet" href="../stylesheets/slidorion.css" />
+	
+	
+	<script src="../javascripts/jquery.min.js"></script>
+	<script src="../javascripts/jquery.easing.js"></script>
+    <script src="../javascripts/jquery.slidorion.min.js"></script>
+	
+    <script>
+	$(document).ready(function() {
+		$('#slidorion').slidorion({
+			hoverPause: true,
+			interval: 2500,
+			speed: 500,
+			effect: 'slideRandom'
+		});
+		$('#slidorion2').slidorion({
+			interval: 4000,
+			speed: 1000,
+			effect: 'overRandom'
+
+		});
+	});
+	</script>
+	
+</head>
+
+<body background="http://blog.desdelinux.net/wp-content/uploads/2012/04/new_wallpaper_ruido.jpg">
+	<br />
+	<br />
+<center><font color="white"><h1>Noticias Recientes</h1></font></center>
+<br />
+<br />
+	<div id="slidorion">
+		<div id="slider">
+			<% 
+  	@publications = Publication.all
+  	@publications.each do |publication| %>
+			<div class="slide">
+				<img src="<%=publication.imagen%>" width="488" height="400" />
+			</div>
+		</div>
+		<%end%>
+		<div id="accordion">
+			<% 
+  	@publications2 = Publication.all
+  	@publications2.each do |publication2| %>
+			<div class="link-header"><%=publication2.titulo%></div>
+			<div class="link-content">
+				<p><%=publication2.contenido%></p>	
+			</div>
+		</div>
+		<%end%>
+	</div>
+	
+	<br /><br /><br /><br /><br />
+	
+	<div id="slidorion2">
+
+		<div id="slider">
+			<div id="slide1" class="slide">
+				<img src="http://www.uach.mx/noticias/2013/01/30/slider%20Zoot%20induccion.jpg" width="488" height="400" />
+			</div>
+			<div id="slide2" class="slide">
+				<img src="http://www.uach.mx/noticias/2013/01/23/slider%20UACH%20diplomados.jpg" width="488" height="400" />
+			</div>
+			<div id="slide3" class="slide">
+				<img src="http://www.uach.mx/noticias/2013/01/22/slider%20UACH%20programa%20artes.jpg" width="488" height="400" />
+			</div>
+		</div>
+
+		<div id="accordion">
+			<div class="link-header">Realizó Zootecnia y Ecología curso...</div>
+			<div class="link-content">
+				<p>Los nuevos alumnos de la Facultad de Zootecnia y Ecología recibieron un curso de inducción que les facilitará la mejor integración en su nueva escuela, así como iniciar en forma propositiva y eficiente con sus cursos y trabajos académicos y otras actividades culturales, sociales y deportivas. El Director de la Facultad de Zootecnia y Ecología M.A. Ing. Luis Raúl Escárcega y personal directivo de la misma, dieron la bienvenida a los alumnos de nuevo ingreso en esta institución,  iniciando  así el curso de inducción del ciclo enero -junio de 2013.</p>
+				<p>La finalidad de este curso es crear un proceso de socialización entre autoridades, personal docente y administrativo con el alumnado, el dar a conocer de primera mano la información necesaria y la orientación debida. Durante este proceso el estudiante aprecia los valores, las competencias, el comportamiento esperado y el conocimiento social que son esenciales para asumir las actitudes ante este nuevo reto. Además del mensaje de bienvenida de las autoridades de la Facultad, maestros de licenciatura y posgrado, tutorías  y personal administrativo se unió en la atención hacia los estudiantes y en proporcionar la información necesaria en el proceso de introducción al ámbito universitario. 
+
+</p>
+			</div>
+			<div class="link-header">Invita Centro de Idiomas...</div>
+			<div class="link-content">
+				<p>El Centro de Idiomas de la Universidad Autónoma de Chihuahua lanza la primera convocatoria a los diplomados en japonés y portugués, los cuales se podrán cursar a partir del próximo lunes 11 de febrero con horarios y costos accesibles. Los profesores de ambos diplomados son nativos, y los materiales de primera calidad (libro y plataforma), lo cual garantiza la excelencia del programa, el cual es certificado por la UACH. Las inscripciones cierran el 8 de febrero y los horarios serán:</p>
+				<p>Japonés: lunes a viernes de 17:00 a 19:00 horas. Impartido por el maestro Nao Okada, certificado JLPT. Portugués:  lunes, martes, miércoles y viernes de 18:00 a 20:00 horas. Impartido por la Maestra Luciana Lins. En ambos casos el primer módulo concluye el 9 de marzo. Para mayores informes, los interesados se deberán comunicar al teléfono (614) 238.2000 (extensión 8000) o a los correos mechavez@uach.mx y diplomadosci@gmail.com.</p>
+			</div>
+			<div class="link-header">Invita Facultad de Artes a asistir...</div>
+			<div class="link-content">
+				<p>La Facultad de Artes de la Universidad Autónoma de Chihuahua invita a la comunidad en general para que asista a las exhibiciones del Programa Permanente de Artes Plásticas, donde se mostrará al público las abstracciones de Martha Ramos Armenta con su serie “Extraños Viajeros”, así como la representación de Olivia Fuentes para tomar conciencia sobre los graves problemas que afronta la mujer y promover su igualdad, conmemorando a la par que la ONU en el Día Internacional de la Mujer. </p>
+			</div>
+		</div>
+
+	</div>
+    
+	<br /><br /><br /><br /><br />
+	
+</body>
+
+</html>
